@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Cifra de Karnak | Missão de Vida</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <style>
+        /* Estilos exclusivos desta página (dependentes da imagem de fundo) */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 100px 20px 60px; text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), 
+                        url('fundo.png'); 
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+
+        .glass-card { 
+            background: rgba(0, 77, 64, 0.12); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(191, 149, 63, 0.3); 
+            padding: 30px 20px; 
+            border-radius: 15px; 
+            width: 100%; 
+            max-width: 400px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
+        }
+
+        .form-group { text-align: left; margin-bottom: 20px; }
+        label { color: var(--dourado-solid); font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+        
+        #sobre { padding: 80px 5%; background: linear-gradient(to bottom, var(--preto), #0a1510); max-width: 1000px; margin: 0 auto; }
+        .sobre-content h2 { font-family: 'Cinzel', serif; color: var(--dourado-solid); font-size: 1.8rem; margin-bottom: 25px; text-align: center; }
+        .sobre-content h3 { font-family: 'Cinzel', serif; color: var(--dourado-solid); margin: 35px 0 15px; font-size: 1.2rem; }
+        .sobre-content p { margin-bottom: 18px; color: #ccc; text-align: justify; font-size: 0.95rem; }
+        .highlight-box { border-left: 3px solid var(--esmeralda); padding: 20px; margin: 25px 0; font-style: italic; color: #fff; background: rgba(0,77,64,0.05); font-size: 0.9rem; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <header id="header-shared"></header>
+
+    <main class="hero">
+        <h1>Qual a sua Missão de Vida?</h1>
+        <div class="glass-card">
+            <form id="missaoForm">
+                <div class="form-group">
+                    <label>Nome Completo (de registo)</label>
+                    <input type="text" id="inputNome" placeholder="Introduza o seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label>Data de Nascimento</label>
+                    <input type="date" id="inputData" required>
+                </div>
+                <button type="submit" class="btn-reveal">Revelar Missão de Vida</button>
+            </form>
+        </div>
+    </main>
+
+    <section id="sobre">
+        <div class="sobre-content">
+            <h2>Sobre a Numerologia Egípcia</h2>
+            <p>A numerologia egípcia tem origem numa das civilizações mais antigas e simbólicas da humanidade. Para os egípcios, os números não eram apenas quantidades — eram princípios universais, forças que expressavam a ordem, o equilíbrio e o movimento da vida.</p>
+            <div class="highlight-box">
+                "Na visão egípcia, o universo não era caótico. Tudo obedecia a uma lógica invisível, regida por leis naturais e simbólicas."
+            </div>
+            <h3>Números como símbolos, não como destino</h3>
+            <p>Ao contrário de abordagens modernas mais fatalistas, a numerologia egípcia não tinha como objetivo prever acontecimentos específicos ou determinar um destino imutável.</p>
+            <p>O seu propósito é compreender a natureza da pessoa, os seus desafios, talentos e ciclos de vida. Cada número representa uma qualidade, uma energia e uma lição.</p>
+            <h3>Um instrumento de autoconhecimento</h3>
+            <p>Conhecer-se a si próprio era um ato sagrado. A numerologia funciona como ferramenta de reflexão pessoal, alinhamento entre ação e propósito, e tomada de decisões mais conscientes.</p>
+            <div class="highlight-box">
+                "Os números não dizem quem és. Ajudam-te a lembrar-te de quem podes ser."
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer-shared"></footer>
+
+    <script src="/js/main.js"></script>
+
+    <script>
+        // BLOQUEIO DE SEGURANÇA (TECLAS TÉCNICAS)
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode == 123 || 
+                (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || 
+                (e.ctrlKey && e.keyCode == 85)
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // LÓGICA DO FORMULÁRIO
+        document.getElementById('missaoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const nome = document.getElementById('inputNome').value;
+            const data = document.getElementById('inputData').value;
+
+            btn.innerText = "A consultar o Oráculo...";
+            btn.disabled = true;
+
+            try {
+                localStorage.setItem('formularioDados', JSON.stringify({ nome: nome, dataNascimento: data }));
+                window.location.href = 'resultados.html';
+            } catch (error) {
+                alert("Erro ao conectar ao Oráculo.");
+                btn.innerText = "Revelar Missão de Vida";
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
