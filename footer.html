@@ -1,0 +1,27 @@
+/**
+ * COMPONENTE BLINDADO: Rodapé
+ */
+<div id="cookie-banner">
+    <div class="cookie-text">
+        Utilizamos cookies para melhorar a sua experiência e analisar o tráfego. Ao continuar, concorda com a nossa política.
+    </div>
+    <div class="cookie-btns">
+        <button class="btn-accept" onclick="aceitarCookies()">Aceitar</button>
+    </div>
+</div>
+
+<div class="footer-links">
+    <a onclick="openModal('privacidade')">Privacidade</a>
+    <a onclick="openModal('termos')">Termos</a>
+    <a onclick="openModal('reembolsos')">Reembolsos</a>
+    <a onclick="openModal('contacto')">Contacto</a>
+</div>
+
+<p class="copy-text">© 2025 A Cifra de Karnak | LVmedias. Todos os direitos reservados.</p>
+
+<div id="legalModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div id="modalBody"></div>
+    </div>
+</div>
