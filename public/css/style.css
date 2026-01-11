@@ -33,7 +33,7 @@ input, button, textarea, [contenteditable="true"] {
 }
 
 /* ============================================================
-   HEADER GLOBAL (Logo à Esquerda, Redes Sociais à Direita)
+   HEADER GLOBAL (Logo à Esquerda, Link à Direita)
    ============================================================ */
 header {
     position: fixed;
@@ -74,34 +74,61 @@ header {
     text-transform: uppercase; 
 }
 
-/* Menu de Redes Sociais no Header */
-nav ul { 
-    list-style: none; 
-    display: flex; 
-    gap: 20px; 
+/* Novo estilo para o link "Seu Mapa Pessoal Completo" */
+.cta-link {
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--dourado-solid);
+    text-transform: uppercase;
+    border: 1px solid rgba(191, 149, 63, 0.5);
+    padding: 8px 15px;
+    border-radius: 3px;
+    transition: 0.3s;
+    letter-spacing: 1px;
 }
 
-nav ul li a { 
-    text-decoration: none; 
-    color: #fff; 
-    font-size: 1.2rem; /* Tamanho ideal para ícones */
-    transition: 0.3s; 
-}
-
-nav ul li a:hover { 
-    color: var(--dourado-solid); 
-    transform: scale(1.2);
-    display: inline-block;
+.cta-link:hover {
+    background: var(--dourado-metal);
+    color: #000;
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(191, 149, 63, 0.3);
 }
 
 /* ============================================================
-   FOOTER GLOBAL (Redes Sociais Removidas do Footer)
+   FOOTER GLOBAL (Com Redes Sociais Integradas)
    ============================================================ */
 footer { 
     background: #000; 
     padding: 50px 20px; 
     border-top: 1px solid var(--esmeralda); 
     text-align: center; 
+}
+
+/* Estilização das Redes Sociais no Footer */
+.social-container {
+    margin-bottom: 30px;
+}
+
+.social-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem; /* Ícones um pouco maiores no rodapé */
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.social-menu li a:hover {
+    color: var(--dourado-solid);
+    transform: translateY(-5px);
 }
 
 .footer-links { 
@@ -131,7 +158,7 @@ footer {
 }
 
 /* ============================================================
-   MODAL LEGAL
+   MODAL LEGAL (Não Alterado)
    ============================================================ */
 .modal { 
     display: none; 
@@ -166,7 +193,7 @@ footer {
 }
 
 /* ============================================================
-   BANNER DE COOKIES
+   BANNER DE COOKIES (Não Alterado)
    ============================================================ */
 #cookie-banner {
     position: fixed; 
@@ -201,7 +228,7 @@ footer {
 }
 
 /* ============================================================
-   BOTÕES E INPUTS (Padrão de UI)
+   BOTÕES E INPUTS (Padrão de UI - Não Alterado)
    ============================================================ */
 .btn-reveal, .btn-hero, .btn-cta, .btn-dourado { 
     background: var(--dourado-metal); 
